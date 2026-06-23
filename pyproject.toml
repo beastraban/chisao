@@ -1,0 +1,76 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "chisao"
+version = "0.1.0"
+description = "GPU-native parallel optimizer for multimodal black-box functions via convergence-anticonvergence oscillation"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "Ira Wolfson", email = "irawolfsonprof@gmail.com" },
+]
+keywords = [
+    "optimization",
+    "multimodal-optimization",
+    "black-box-optimization",
+    "global-optimization",
+    "gpu",
+    "mode-finding",
+    "population-methods",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = [
+    "numpy>=1.20",
+    "scipy>=1.7",
+]
+
+[project.optional-dependencies]
+gpu = [
+    "cupy>=11.0",
+]
+profile = [
+    "psutil>=5.8",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "ruff>=0.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/beastraban/chisao"
+Repository = "https://github.com/beastraban/chisao"
+Issues = "https://github.com/beastraban/chisao/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/chisao"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.black]
+line-length = 100
+target-version = ["py39", "py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 100
+lint.select = ["E", "F", "W", "I"]
+lint.ignore = ["E501"]
