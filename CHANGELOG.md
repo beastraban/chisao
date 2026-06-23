@@ -4,6 +4,22 @@ All notable changes to ChiSao are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning is
 [SemVer](https://semver.org/).
 
+## [0.1.1] — 2026-06-23
+
+### Added
+- `cuda11` / `cuda12` / `cuda13` install extras for the matching CuPy wheels.
+- Working-GPU probe (`chisao._gpu`, `chisao.GPU_OK`): detects a CuPy that imports
+  but whose CUDA libraries are broken/mismatched and falls back to CPU instead of
+  crashing. Force CPU with `CHISAO_FORCE_CPU=1`.
+
+### Changed
+- `chisao.__version__` now reports the distribution version; the vendored
+  optimizer lineage is available as `chisao.__core_version__`.
+- Full README (the 0.1.0 release shipped a placeholder).
+
+### Fixed
+- Recovery tests are GPU-safe (host-convert CuPy arrays via `.get()`).
+
 ## [0.1.0] — unreleased
 
 ### Added
