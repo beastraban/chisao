@@ -34,12 +34,19 @@ GPU acceleration is automatic when CuPy is installed (``pip install chisao[gpu]`
 otherwise everything runs on NumPy.
 """
 
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version as _pkg_version
+
+import numpy as _np
+
+from . import core as _core
+from . import single_whip as _single_whip
+from ._gpu import GPU_OK
 from .core import (
     SINGLEWHIP_AVAILABLE,
     SINGLEWHIP_VERSION,
     GPUCapability,
     SampleBank,
-    __version__,
     deduplicate_peaks_L_infinity,
     estimate_peak_width,
     get_gpu_info,
@@ -48,6 +55,7 @@ from .core import (
     optimize_batch,
     sticky_hands,
 )
+from .core import __version__ as __core_version__  # vendored optimizer lineage
 from .seeding import (
     carry_tiger_rays,
     carry_tiger_seed,
@@ -60,8 +68,23 @@ from .single_whip import (
     randcoord_line_search_batch,
 )
 
+try:
+    __version__ = _pkg_version("chisao")
+except PackageNotFoundError:  # running from a source tree without install
+    __version__ = "0.1.0"
+
+# Graceful CPU fallback: if CuPy is absent OR installed-but-broken, force the
+# vendored optimizer onto NumPy so it degrades to CPU instead of crashing.
+if not GPU_OK:
+    _core.GPU_AVAILABLE = False
+    _core.cp = _np
+    _single_whip.GPU_AVAILABLE = False
+    _single_whip.cp = _np
+
 __all__ = [
     "__version__",
+    "__core_version__",
+    "GPU_OK",
     # core optimizer
     "sticky_hands",
     "optimize",

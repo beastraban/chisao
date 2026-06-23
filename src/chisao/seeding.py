@@ -40,12 +40,10 @@ import numpy as np
 
 try:  # optional GPU backend
     import cupy as cp  # type: ignore
-
-    _CUPY_AVAILABLE = True
 except Exception:  # pragma: no cover - environment dependent
     cp = None  # type: ignore
-    _CUPY_AVAILABLE = False
 
+from ._gpu import GPU_OK as _GPU_OK
 from .core import sticky_hands
 
 __all__ = [
@@ -71,12 +69,12 @@ def get_array_module(use_gpu: Optional[bool] = None):
         ``None``  -> CuPy if available, else NumPy.
     """
     if use_gpu is True:
-        if not _CUPY_AVAILABLE:
-            raise RuntimeError("use_gpu=True but CuPy is not available.")
+        if not _GPU_OK:
+            raise RuntimeError("use_gpu=True but no working CuPy/GPU was found.")
         return cp
     if use_gpu is False:
         return np
-    return cp if _CUPY_AVAILABLE else np
+    return cp if _GPU_OK else np
 
 
 def _as_bounds(bounds, xp) -> "np.ndarray":

@@ -1,7 +1,9 @@
-"""End-to-end mode recovery on CPU (NumPy backend).
+"""End-to-end mode recovery (NumPy or CuPy backend).
 
-Smoke / regression tests, not the full SFU benchmark. They run on the NumPy
-backend so they execute in CI without a GPU.
+Smoke / regression tests, not the full SFU benchmark. They run on whichever
+backend ``chisao`` selects: NumPy in CI (no GPU), CuPy on a GPU machine. Peaks
+are therefore converted to host arrays with ``_to_numpy`` before comparison --
+CuPy intentionally blocks implicit ``np.asarray`` conversion.
 
 Note on seeders: the paper's central finding is that *seeding matters*. The
 ``carry_tiger`` seeder reliably recovers the global mode on landscapes where a
@@ -14,10 +16,18 @@ import numpy as np
 from chisao import optimize
 
 
+def _to_numpy(a):
+    """Host-side ndarray from a NumPy or CuPy array (or None)."""
+    if a is None:
+        return None
+    return a.get() if hasattr(a, "get") else np.asarray(a)
+
+
 def _recovered(peaks, target, tol):
+    peaks = _to_numpy(peaks)
     if peaks is None or len(peaks) == 0:
         return False
-    d = np.max(np.abs(np.asarray(peaks) - np.asarray(target)), axis=1)
+    d = np.max(np.abs(peaks - np.asarray(target)), axis=1)
     return bool(np.any(d < tol))
 
 
@@ -50,8 +60,8 @@ def test_random_seeder_returns_well_formed_output():
     bounds = [(-5.12, 5.12)] * 2
     peaks, logL = optimize(neg_rastrigin, bounds, seeder="random", seed=0, n_oscillations=3)
     assert peaks is not None
-    peaks = np.asarray(peaks)
-    logL = np.asarray(logL)
+    peaks = _to_numpy(peaks)
+    logL = _to_numpy(logL)
     # Either no peaks, or a [K, d] block with one logL per peak.
     assert len(peaks) == len(logL)
     if len(peaks):
