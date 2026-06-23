@@ -34,24 +34,21 @@ def sphere(X):
 def test_sphere_unimodal_recovery():
     """Strictly concave: the single maximum at the origin must be found."""
     bounds = [(-5.0, 5.0)] * 4
-    peaks, logL = optimize(sphere, bounds, seeder="carry_tiger", seed=0,
-                           n_oscillations=2)
+    peaks, logL = optimize(sphere, bounds, seeder="carry_tiger", seed=0, n_oscillations=2)
     assert _recovered(peaks, np.zeros(4), tol=1e-2)
 
 
 def test_rastrigin_carry_tiger_recovers_global():
     """Carry-Tiger seeding recovers the Rastrigin global max at the origin."""
     bounds = [(-5.12, 5.12)] * 2
-    peaks, logL = optimize(neg_rastrigin, bounds, seeder="carry_tiger", seed=0,
-                           n_oscillations=3)
+    peaks, logL = optimize(neg_rastrigin, bounds, seeder="carry_tiger", seed=0, n_oscillations=3)
     assert _recovered(peaks, np.zeros(2), tol=5e-2)
 
 
 def test_random_seeder_returns_well_formed_output():
     """The random seeder must run and return a well-formed (peaks, logL) pair."""
     bounds = [(-5.12, 5.12)] * 2
-    peaks, logL = optimize(neg_rastrigin, bounds, seeder="random", seed=0,
-                           n_oscillations=3)
+    peaks, logL = optimize(neg_rastrigin, bounds, seeder="random", seed=0, n_oscillations=3)
     assert peaks is not None
     peaks = np.asarray(peaks)
     logL = np.asarray(logL)
