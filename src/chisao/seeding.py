@@ -34,20 +34,19 @@ and returns the discovered modes, mirroring the two-seeder comparison
 
 from __future__ import annotations
 
-import warnings
-from typing import Callable, Optional, Tuple, Union, Dict, Any
+from typing import Any, Callable, Dict, Optional, Tuple, Union
 
 import numpy as np
 
 try:  # optional GPU backend
     import cupy as cp  # type: ignore
+
     _CUPY_AVAILABLE = True
 except Exception:  # pragma: no cover - environment dependent
     cp = None  # type: ignore
     _CUPY_AVAILABLE = False
 
 from .core import sticky_hands
-
 
 __all__ = [
     "get_array_module",
@@ -183,9 +182,7 @@ def carry_tiger_rays(
         row = xp.arange(n_v2e)
         fixed_dims = xp.random.randint(0, D, size=n_v2e)
         fixed_sides = xp.random.randint(0, 2, size=n_v2e)
-        v2e_ends[row, fixed_dims] = xp.where(
-            fixed_sides == 0, b[fixed_dims, 0], b[fixed_dims, 1]
-        )
+        v2e_ends[row, fixed_dims] = xp.where(fixed_sides == 0, b[fixed_dims, 0], b[fixed_dims, 1])
         all_starts.append(v2e_starts)
         all_ends.append(v2e_ends)
 
@@ -345,8 +342,12 @@ def optimize(
         x0 = seeder(func=func, bounds=b, use_gpu=use_gpu, seed=seed)
     elif seeder == "carry_tiger":
         x0 = carry_tiger_seed(
-            func, b, n_rays=n_rays, n_samples_per_ray=n_samples_per_ray,
-            use_gpu=use_gpu, seed=seed,
+            func,
+            b,
+            n_rays=n_rays,
+            n_samples_per_ray=n_samples_per_ray,
+            use_gpu=use_gpu,
+            seed=seed,
         )
     elif seeder == "random":
         x0 = random_seed(b, n=n_random, use_gpu=use_gpu, seed=seed)

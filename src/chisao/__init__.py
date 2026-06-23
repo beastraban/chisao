@@ -35,31 +35,29 @@ otherwise everything runs on NumPy.
 """
 
 from .core import (
+    SINGLEWHIP_AVAILABLE,
+    SINGLEWHIP_VERSION,
+    GPUCapability,
+    SampleBank,
     __version__,
-    sticky_hands,
-    lbfgs_batch,
-    gradient_ascent_batch,
     deduplicate_peaks_L_infinity,
     estimate_peak_width,
     get_gpu_info,
+    gradient_ascent_batch,
+    lbfgs_batch,
     optimize_batch,
-    SampleBank,
-    GPUCapability,
-    SINGLEWHIP_AVAILABLE,
-    SINGLEWHIP_VERSION,
+    sticky_hands,
 )
-
+from .seeding import (
+    carry_tiger_rays,
+    carry_tiger_seed,
+    get_array_module,
+    optimize,
+    random_seed,
+)
 from .single_whip import (
     SingleWhip,
     randcoord_line_search_batch,
-)
-
-from .seeding import (
-    optimize,
-    carry_tiger_seed,
-    carry_tiger_rays,
-    random_seed,
-    get_array_module,
 )
 
 __all__ = [
