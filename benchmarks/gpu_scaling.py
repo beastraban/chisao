@@ -111,7 +111,7 @@ def _np_min_obj():
     return f, fe
 
 
-def run_cmaes(D, maxiter=100000):   # high safety cap; convergence (tolfun/tolx) stops it first
+def run_cmaes(D, maxiter=100000, cap=None):   # convergence (tolfun/tolx) stops it, unless the cap hits first
     import cma
     f, fe = _np_min_obj(); lb, ub = BOX
     x0 = np.random.uniform(lb, ub, D); sigma0 = (ub - lb) / 4.0
@@ -120,25 +120,35 @@ def run_cmaes(D, maxiter=100000):   # high safety cap; convergence (tolfun/tolx)
     es = cma.CMAEvolutionStrategy(x0, sigma0,
         {'bounds': [lb, ub], 'maxiter': maxiter, 'tolfun': 1e-9, 'tolx': 1e-9, 'verbose': -9})
     while not es.stop():
+        if cap is not None and time.time() - t0 > cap:
+            return time.time() - t0, fe["n"], False        # exceeded the wall-clock budget
         sols = es.ask(); es.tell(sols, [f(s) for s in sols])
-    return time.time() - t0, fe["n"]
+    return time.time() - t0, fe["n"], True
 
 
-def run_de(D, maxiter=40):
+def run_de(D, maxiter=40, cap=None):
     from scipy.optimize import differential_evolution
     f, fe = _np_min_obj(); lb, ub = BOX
-    t0 = time.time()
-    differential_evolution(f, [(lb, ub)] * D, maxiter=maxiter, tol=0, polish=False, seed=0)
-    return time.time() - t0, fe["n"]
+    t0 = time.time(); to = {"hit": False}
+    def cb(xk, convergence=None):
+        if cap is not None and time.time() - t0 > cap:
+            to["hit"] = True; return True
+        return False
+    differential_evolution(f, [(lb, ub)] * D, maxiter=maxiter, tol=0, polish=False, seed=0, callback=cb)
+    return time.time() - t0, fe["n"], (not to["hit"])
 
 
-def run_bh(D, niter=20):
+def run_bh(D, niter=20, cap=None):
     from scipy.optimize import basinhopping
     f, fe = _np_min_obj(); lb, ub = BOX
     x0 = np.random.uniform(lb, ub, D)
-    t0 = time.time()
-    basinhopping(f, x0, niter=niter, seed=0)
-    return time.time() - t0, fe["n"]
+    t0 = time.time(); to = {"hit": False}
+    def cb(x, fval, accept):
+        if cap is not None and time.time() - t0 > cap:
+            to["hit"] = True; return True
+        return False
+    basinhopping(f, x0, niter=niter, seed=0, callback=cb)
+    return time.time() - t0, fe["n"], (not to["hit"])
 
 
 BASELINES = {"CMA-ES": run_cmaes, "DE": run_de, "BasinHop": run_bh}
@@ -153,24 +163,30 @@ def main():
                     help="also run CMA-ES/DE/BasinHopping (CPU) for the same-hardware exponent comparison")
     ap.add_argument("--baseline-max-dim", type=int, default=256,
                     help="cap dim for baselines (they scale O(D^2-3); avoid hanging at high D)")
+    ap.add_argument("--wall-cap", type=float, default=None, dest="wall_cap",
+                    help="per-run wall-clock budget (s) for baselines; a run exceeding it is marked 'cap' "
+                         "(over budget), and that method is then skipped at all higher dimensions")
+    ap.add_argument("--baselines-only", action="store_true", dest="baselines_only",
+                    help="skip the ChiSao curve; run only the (capped) baselines")
     ap.add_argument("--out", default="gpu_scaling.json")
     args = ap.parse_args()
     dims = [int(d) for d in args.dims.split(",")]
     print(f"Device: {DEV}\n")
-    print("warming up (compiling kernels / building context) ...", flush=True)
-    run(dims[0])                                       # discard: one-time GPU warmup
-    print(f"{'D':>6} {'recover':>7} {'FEs':>13} {'wall_s(med)':>11}")
-    print("-" * 42)
     FE, WALL, REC = [], [], []
-    for D in dims:
-        walls = []; rec = fes = None
-        for _ in range(max(1, args.reps)):
-            rec, fes, w = run(D); walls.append(w)
-        wall = float(np.median(walls))
-        FE.append(fes); WALL.append(wall); REC.append(rec)
-        print(f"{D:>6} {rec:>7.2f} {fes:>13,} {wall:>11.3f}")
     chisao_b = None
-    if len(dims) >= 2:
+    if not args.baselines_only:
+        print("warming up (compiling kernels / building context) ...", flush=True)
+        run(dims[0])                                       # discard: one-time GPU warmup
+        print(f"{'D':>6} {'recover':>7} {'FEs':>13} {'wall_s(med)':>11}")
+        print("-" * 42)
+        for D in dims:
+            walls = []; rec = fes = None
+            for _ in range(max(1, args.reps)):
+                rec, fes, w = run(D); walls.append(w)
+            wall = float(np.median(walls))
+            FE.append(fes); WALL.append(wall); REC.append(rec)
+            print(f"{D:>6} {rec:>7.2f} {fes:>13,} {wall:>11.3f}")
+    if not args.baselines_only and len(dims) >= 2:
         a = np.polyfit(np.log(dims), np.log(FE), 1)[0]
         chisao_b = np.polyfit(np.log(dims), np.log(WALL), 1)[0]
         print("-" * 42)
@@ -179,16 +195,25 @@ def main():
 
     if args.baselines:
         bdims = [d for d in dims if d <= args.baseline_max_dim]
-        print(f"\n=== Baselines (CPU libraries, same-hardware exponent comparison; D <= {args.baseline_max_dim}) ===")
-        print(f"{'D':>6} " + " ".join(f"{n:>11}" for n in BASELINES) + "    (wall_s)")
+        cap_note = f", wall-cap {args.wall_cap:.0f}s/run" if args.wall_cap else ""
+        print(f"\n=== Baselines (CPU libraries, same-hardware comparison; D <= {args.baseline_max_dim}{cap_note}) ===")
+        print(f"{'D':>6} " + " ".join(f"{n:>11}" for n in BASELINES) + "    (wall_s; 'cap' = over budget)")
         bwall = {n: [] for n in BASELINES}
+        bok = {n: [] for n in BASELINES}
+        capped = set()                                       # methods that have exceeded the budget
         for D in bdims:
             row = f"{D:>6} "
             for n, fn in BASELINES.items():
+                if n in capped:                              # monotone: over budget at lower D -> over here too
+                    bwall[n].append(np.nan); bok[n].append(False); row += f"{'cap':>11} "; continue
                 try:
-                    w, _ = fn(D); bwall[n].append(w); row += f"{w:>11.3f} "
+                    w, _, ok = fn(D, cap=args.wall_cap)
+                    bwall[n].append(w if ok else np.nan); bok[n].append(bool(ok))
+                    row += f"{(f'{w:.1f}' if ok else 'cap'):>11} "
+                    if not ok:
+                        capped.add(n)
                 except Exception as e:
-                    bwall[n].append(np.nan); row += f"{'ERR':>11} "
+                    bwall[n].append(np.nan); bok[n].append(False); row += f"{'ERR':>11} "
             print(row, flush=True)
         print("-" * 42)
         dev = "CPU" if not USE_GPU else "GPU"
@@ -209,6 +234,8 @@ def main():
     if args.baselines:
         out["baseline_dims"] = bdims
         out["baselines_wall_s"] = {n: bwall[n] for n in BASELINES}
+        out["baselines_completed"] = {n: bok[n] for n in BASELINES}
+        out["wall_cap"] = args.wall_cap
     json.dump(out, open(args.out, "w"), indent=2)
     print(f"\nwrote {args.out}")
 
