@@ -25,3 +25,4 @@ htmlcov/
 
 # CuPy / build artifacts
 *.so
+/gitIgnored
