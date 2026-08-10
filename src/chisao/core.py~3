@@ -880,7 +880,6 @@ def lbfgs_batch(
     verbose: bool = False,
     func_returns_grad: bool = False,  # Analytic gradient support
     line_search: str = 'armijo',  # 'armijo' (safe) or 'fixed' (fast)
-    epsilon: Optional[float] = None,  # FD step for convergence gradient; None = auto (dtype). Set ~sigma under noise.
     return_trajectories: bool = False  # NEW: Store intermediate positions for rotation detection
 ) -> Dict[str, Union[np.ndarray, 'cp.ndarray']]:
     """
@@ -965,8 +964,8 @@ def lbfgs_batch(
     if func_returns_grad:
         _, grad = func(x)
     else:
-        grad = compute_gradient_batch(func, x, epsilon=epsilon, batch_size=batch_size)
-
+        grad = compute_gradient_batch(func, x, batch_size=batch_size)
+    
     converged = xp.zeros(N, dtype=bool)
     
     for iteration in range(hard_max):
@@ -1077,7 +1076,7 @@ def lbfgs_batch(
         if func_returns_grad:
             _, grad_new = func(x_new)
         else:
-            grad_new = compute_gradient_batch(func, x_new, epsilon=epsilon, batch_size=batch_size)
+            grad_new = compute_gradient_batch(func, x_new, batch_size=batch_size)
         
         # Update L-BFGS history
         s_k = x_new - x
@@ -2791,78 +2790,6 @@ def _cannon_through_sky(
     return x_cannoned, n_cannoned
 
 
-def _recover_stuck_peaks(peaks, L_peaks, func, bounds, xp, func_returns_grad,
-                         period, passes=3, polish_iters=100):
-    """v3.4: recover ripple-stuck peaks (duplicate -> throw -> accumulate -> polish).
-
-    A converged peak can sit one mode-spacing away from the true optimum in a few
-    coordinates (deep-ripple objectives; L-inf error ~= one period). This throws
-    each peak along the curvature eigen-axes by +/- one `period` and KEEPS every
-    jump that RAISES the objective value -- so, for separable landscapes, the
-    per-coordinate fixes compose and every stuck axis is walked home. A sharp
-    L-BFGS polish then lands it exactly.
-
-    NOTE: the eigen-axes here are the coordinate axes, which are exact for
-    separable / axis-aligned objectives (standard Rastrigin etc.). Rotated /
-    non-separable landscapes need the L-BFGS *history* Hessian (the descent
-    trajectory crossed the ripples; lbfgs_batch(..., return_trajectories=True))
-    because the frozen well-center Hessian is isotropic and blind -- follow-up.
-    """
-    if len(peaks) == 0 or period <= 0:
-        return peaks, L_peaks
-
-    def value(X):
-        r = func(X)
-        return r[0] if isinstance(r, tuple) else r
-
-    x = peaks.copy()
-    D = x.shape[1]
-    lo = bounds[:, 0]; hi = bounds[:, 1]
-    vx = value(x)
-    for _ in range(passes):
-        for j in range(D):
-            for sgn in (period, -period):
-                cand = x.copy()
-                cand[:, j] = xp.clip(x[:, j] + sgn, lo[j], hi[j])
-                vc = value(cand)
-                better = vc > vx
-                x = xp.where(better[:, None], cand, x)
-                vx = xp.where(better, vc, vx)
-    # sharp polish from the improved points; keep only if it does not lose value
-    pol = lbfgs_batch(func, x, bounds=bounds, maxiter=polish_iters,
-                      func_returns_grad=func_returns_grad)
-    better = pol['L'] > vx
-    x = xp.where(better[:, None], pol['x'], x)
-    vx = xp.where(better, pol['L'], vx)
-    return x, vx
-
-
-def _estimate_period(func, bounds, whip, xp, func_returns_grad, n_rays=64, n_samp=256):
-    """v3.4: estimate the mode spacing (the throw distance for recovery) by probing
-    the objective along rays and reading the finest characteristic scale
-    (whip.estimate_characteristic_scales -> lambda_fine). Objective-agnostic:
-    replaces a hardcoded period (Rastrigin=1.0, Griewank ~sqrt(i)-scaled, ...).
-    Returns a coordinate-unit period, or None if it cannot be estimated."""
-    if whip is None or not hasattr(whip, 'estimate_characteristic_scales'):
-        return None
-    lo = bounds[:, 0]; hi = bounds[:, 1]
-    center = 0.5 * (lo + hi)
-    rng = xp.random.default_rng(0)
-    dirs = rng.standard_normal((n_rays, bounds.shape[0]))
-    dirs = dirs / (xp.linalg.norm(dirs, axis=1, keepdims=True) + 1e-12)
-    L = 0.45 * float(xp.min(hi - lo))
-    t = xp.linspace(0.0, L, n_samp)
-    pts = xp.clip(center[None, None, :] + t[None, :, None] * dirs[:, None, :], lo, hi).reshape(-1, bounds.shape[0])
-    r = func(pts)
-    fv = r[0] if isinstance(r, tuple) else r
-    try:
-        lam = whip.estimate_characteristic_scales(fv.reshape(n_rays, n_samp), t)
-        p = float(lam[0])
-        return p if p > 1e-6 else None
-    except Exception:
-        return None
-
-
 def sticky_hands(
     func: Callable,
     x0: Union[np.ndarray, 'cp.ndarray'],
@@ -2871,14 +2798,6 @@ def sticky_hands(
     n_anticonverge: int = 5,
     n_oscillations: int = 3,
     stick_tolerance: float = 1e-6,
-    grad_threshold: Optional[float] = None,  # convergence gradient gate (L_inf); None -> use stick_tolerance.
-                                             # For noisy likelihoods set ~10x sensed gradient noise (assess_noise).
-    dedup_radius: Optional[float] = None,    # peak dedup radius (coord units); None -> stick_tolerance/2.
-                                             # Widen to the noise-dependent localization radius under noise.
-    epsilon: Optional[float] = None,         # FD step for ALL gradient computations; None -> auto (dtype).
-                                             # Set ~sigma (assess_noise fd_eps) so noise isn't amplified by 1/eps.
-    scale_invariant: bool = False,   # v3.5: affine-invariant quality + relative gradient gate
-    quality_frac: float = 0.1,       # keep samples within this fraction of the observed value spread
     reseed_strategy: Optional[Union[str, Callable]] = None,
     reseed_ray_length: float = 0.1,
     reseed_max_attempts: int = 10,
@@ -2891,15 +2810,11 @@ def sticky_hands(
     # v2.2: Clouding parameters
     cloud_sigma: Optional[float] = None,
     cloud_scales: Optional[tuple] = None,   # (λ_fine, λ_mid, λ_coarse) from estimate_characteristic_scales
-    cloud_multiscale: bool = False,         # v3.3: cascade HLC coarse→mid→fine (opt-in; single σ by default)
+    cloud_multiscale: bool = True,          # v3.3: cascade HLC coarse→mid→fine instead of a single σ
     n_cloud: int = 2,
     cloud_K: int = 10,
     cloud_step_size: float = 0.1,
     cloud_enabled: bool = True,
-    # v3.4: ripple-stuck peak recovery (opt-in)
-    recover_stuck: bool = True,
-    recover_period: Optional[float] = 1.0,    # mode spacing (coord units); None = experimental auto-estimate (imperfect)
-    recover_topk: int = 64,        # recover only the top-K peaks by value
     # v2.3: Two-phase mode support
     mode: str = 'full',  # 'full' or 'hlc_only'
     # Other parameters
@@ -3128,7 +3043,6 @@ def sticky_hands(
         result = optimizer_func(
             func, x,
             maxiter=n_converge,
-            epsilon=epsilon,
             tol=stick_tolerance / 10,
             bounds=bounds,
             batch_size=batch_size,
@@ -3179,25 +3093,9 @@ def sticky_hands(
         # Since log(0.1) ≈ -2.303, the operational demand becomes:
         #   log(L) >= log(L_max) - 2.303
         max_L = xp.max(L)
-        if scale_invariant:
-            # Affine-invariant quality gate: keep samples within quality_frac of the top
-            # of the OBSERVED value spread (invariant under L -> aL+b), and test the
-            # gradient RELATIVE to the value/domain scale rather than an absolute constant.
-            # This removes the log-likelihood assumption baked into log(0.1); for a true
-            # log-likelihood the old additive gate is correct, hence the flag.
-            spread = max_L - xp.min(L)
-            spread = spread if float(spread) > 0 else xp.asarray(1.0, dtype=L.dtype)
-            is_high_likelihood = L >= max_L - quality_frac * spread
-            _dom = float(xp.mean(bounds[:, 1] - bounds[:, 0])) if bounds is not None else 1.0
-            _gtol = stick_tolerance * max(float(spread) / max(_dom, 1e-12), 1e-12)
-            if grad_threshold is not None:
-                _gtol = max(_gtol, grad_threshold)   # never demand a tighter gradient than the noise floor
-            newly_stuck = (grad_norm < _gtol) & is_high_likelihood
-        else:
-            log_threshold = max_L + xp.log(0.1)  # log(L_max) + log(0.1) = log(0.1 * L_max)
-            is_high_likelihood = L >= log_threshold
-            _stuck_gtol = grad_threshold if grad_threshold is not None else stick_tolerance
-            newly_stuck = (grad_norm < _stuck_gtol) & is_high_likelihood
+        log_threshold = max_L + xp.log(0.1)  # log(L_max) + log(0.1) = log(0.1 * L_max)
+        is_high_likelihood = L >= log_threshold
+        newly_stuck = (grad_norm < stick_tolerance) & is_high_likelihood
         stuck_mask |= newly_stuck
         
         n_stuck = xp.sum(stuck_mask)
@@ -3207,7 +3105,7 @@ def sticky_hands(
         
         # Deduplicate converged samples
         N_before_dedup = len(x)
-        dedup_tol = dedup_radius if dedup_radius is not None else stick_tolerance / 2
+        dedup_tol = stick_tolerance / 2
         
         # v1.8: Pass Hessian info to dedup for widest-valid transfer
         if inv_hessian_agg is not None and hessian_valid_agg is not None:
@@ -3504,7 +3402,7 @@ def sticky_hands(
                 history.append({'stage': 'post_cannon', 'oscillation': k+1, 'samples': xp_cpu.copy()})
     
     # Deduplicate before final convergence
-    dedup_tol = dedup_radius if dedup_radius is not None else stick_tolerance / 2
+    dedup_tol = stick_tolerance / 2
     L_temp = xp.zeros(len(x))  # Temporary L values for deduplication
     x, _, dedup_mask_pre = deduplicate_peaks_L_infinity(x, L_temp, tolerance=dedup_tol, keep_best=False, verbose=verbose, return_mask=True)
     if inv_hessian_agg is not None:
@@ -3519,7 +3417,6 @@ def sticky_hands(
     final_result = optimizer_func(
         func, x,
         maxiter=100,
-        epsilon=epsilon,
         tol=stick_tolerance / 10,
         bounds=bounds,
         batch_size=batch_size,
@@ -3553,7 +3450,7 @@ def sticky_hands(
         history.append({'stage': 'final', 'oscillation': n_oscillations+1, 'samples': xp_cpu.copy()})
     
     # Final deduplication (track mask for inv_hessian_scale, with Hessian transfer)
-    dedup_tol = dedup_radius if dedup_radius is not None else stick_tolerance / 2
+    dedup_tol = stick_tolerance / 2
     if inv_hessian_agg is not None and hessian_valid_agg is not None:
         ihs_for_dedup = inv_hessian_agg.copy()
         valid_for_dedup = hessian_valid_agg.copy()
@@ -3575,7 +3472,6 @@ def sticky_hands(
         reconv_result = optimizer_func(
             func, peaks,
             maxiter=20,
-            epsilon=epsilon,
             tol=stick_tolerance / 10,
             bounds=bounds,
             batch_size=batch_size,
@@ -3719,7 +3615,6 @@ def sticky_hands(
                 reconv_result = optimizer_func(
                     func, peaks,
                     maxiter=50,
-                    epsilon=epsilon,
                     tol=stick_tolerance / 10,
                     bounds=bounds,
                     batch_size=batch_size,
@@ -3738,24 +3633,12 @@ def sticky_hands(
         if func_returns_grad:
             _, final_grad = func(peaks)
         else:
-            final_grad = compute_gradient_batch(func, peaks, epsilon=epsilon, batch_size=batch_size)
+            final_grad = compute_gradient_batch(func, peaks, batch_size=batch_size)
         grad_norm_inf = xp.max(xp.abs(final_grad), axis=1)
         
         # Dimension-adaptive: 1e-6 at 8D, scales with sqrt(D/8)
         D = peaks.shape[1]
-        grad_tol = (grad_threshold if grad_threshold is not None else stick_tolerance) * max(1.0, np.sqrt(D / 8.0))
-        if scale_invariant:
-            # relativize by the objective's gradient scale (value spread / domain width),
-            # so a "converged" peak is judged small RELATIVE to the objective, not absolutely.
-            try:
-                Lall = sample_bank.get_bank_dict()['log_L'] if bank_samples else L_peaks
-                vspread = float(xp.max(Lall) - xp.min(Lall))
-            except Exception:
-                vspread = float(xp.max(L_peaks) - xp.min(L_peaks)) if len(L_peaks) > 1 else 1.0
-            if not (vspread > 0):
-                vspread = 1.0
-            _dom = float(xp.mean(bounds[:, 1] - bounds[:, 0])) if bounds is not None else 1.0
-            grad_tol *= max(vspread / max(_dom, 1e-12), 1e-12)
+        grad_tol = stick_tolerance * max(1.0, np.sqrt(D / 8.0))
         converged_final = grad_norm_inf < grad_tol
         
         n_before_grad_filter = len(peaks)
@@ -3806,23 +3689,7 @@ def sticky_hands(
     
     # Update converged_mask to match final peaks (all are converged now)
     converged_mask = xp.ones(len(peaks), dtype=bool)
-
-    # v3.4: ripple-stuck peak recovery (opt-in). Throw the top-K peaks along the
-    # curvature axes by +/- one period, keep value-improving jumps, then polish.
-    if recover_stuck and bounds is not None and len(peaks) > 0:
-        _period = recover_period
-        if _period is None:
-            _period = _estimate_period(func, bounds, whip, xp, func_returns_grad)
-        if _period and _period > 0:
-            K = min(recover_topk, len(peaks))
-            idx = xp.argsort(-L_peaks)[:K]
-            rp, rL = _recover_stuck_peaks(peaks[idx], L_peaks[idx], func, bounds, xp,
-                                          func_returns_grad, _period)
-            peaks = peaks.copy(); L_peaks = L_peaks.copy()
-            peaks[idx] = rp; L_peaks[idx] = rL
-            if verbose:
-                print(f"  Stuck-peak recovery: threw top-{K} peaks (period={_period:.3f})")
-
+    
     # v2.4: Bank final samples
     if bank_samples:
         sample_bank.add_samples(peaks, L_peaks, 'final', n_oscillations+1, converged_mask)

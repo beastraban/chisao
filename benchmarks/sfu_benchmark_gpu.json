@@ -1,0 +1,1514 @@
+{
+  "rastrigin": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 5.84542250999948,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 10.62452251999348,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 18.3260939699976,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 8.552267960002064,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 8.13903059999284,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 13.054973450003308,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 7.30601263999124,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.711337389997789,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 7.896863400001894,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.306978669998353,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 7.003017970002839,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 7.13452584000188,
+        "n_trials": 10
+      }
+    }
+  },
+  "ackley": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 11.21179311001033,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 15.446630850003567,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 7.757836769998539,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 19.899115100002383,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 0.1,
+        "mean_wall": 5.6353554900066225,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 14.255922170000849,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 0.0,
+        "mean_wall": 3.3810641199990643,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 13.048190509996493,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 0.0,
+        "mean_wall": 3.121482619998278,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 12.992156690001138,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 0.0,
+        "mean_wall": 3.4522203600034116,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 26.79979080000485,
+        "n_trials": 10
+      }
+    }
+  },
+  "schwefel": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 9.579160850003245,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 13.55383165999956,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 0.8,
+        "mean_wall": 11.014655489995494,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 0.7,
+        "mean_wall": 13.123821160002262,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 0.0,
+        "mean_wall": 11.750874790002126,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 0.1,
+        "mean_wall": 13.50711782000144,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 0.0,
+        "mean_wall": 12.507441340005608,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 0.0,
+        "mean_wall": 13.530861059998278,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 0.0,
+        "mean_wall": 13.365339360001963,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 0.0,
+        "mean_wall": 14.171594860000187,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 0.0,
+        "mean_wall": 14.936154189993976,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 0.0,
+        "mean_wall": 15.582389529998181,
+        "n_trials": 10
+      }
+    }
+  },
+  "griewank": {
+    "2": {
+      "random": {
+        "rate": 0.1,
+        "mean_wall": 1.4057212800049457,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 4.430400440003723,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 0.0,
+        "mean_wall": 2.394245289996616,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 3.4325125800009118,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 4.147303219995228,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 5.176890049999929,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 5.895014200004516,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 8.057370030001039,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 7.4724029200064255,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 8.869418249995215,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 11.112133600001107,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 13.009557770003449,
+        "n_trials": 10
+      }
+    }
+  },
+  "levy": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 8.951996849998249,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 11.312279929991927,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 6.781236290000379,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.910625920008169,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 7.062692100007553,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 8.349894009999115,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 7.598421699999017,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.790827749992605,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 7.9452838099969085,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.05318631999835,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 10.744381419999991,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 13.542680540002767,
+        "n_trials": 10
+      }
+    }
+  },
+  "styblinski_tang": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 1.2535250699991594,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 1.845518789999187,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 9.541861409999546,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 6.7545912199973825,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 2.355273610004224,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 7.080143809999572,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 1.4585722599964357,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 2.805107869999483,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 1.596931719998247,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 2.177337090001674,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 2.597301850005169,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 3.7316840999992564,
+        "n_trials": 10
+      }
+    }
+  },
+  "michalewicz": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 1.5314695499953814,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 3.386404229994514,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 7.750051790001453,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.788948620000156,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 6.369181910000043,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.856423200000426,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 9.858568059996468,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 14.156178319995524,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 16.756115019999562,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.661978470007307,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 12.09320854000398,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 15.096026009993512,
+        "n_trials": 10
+      }
+    }
+  },
+  "easom": {
+    "2": {
+      "random": {
+        "rate": 0.2,
+        "mean_wall": 0.35792493999470026,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 0.6,
+        "mean_wall": 3.4767171899962706,
+        "n_trials": 10
+      }
+    }
+  },
+  "cross_in_tray": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 13.618818829997327,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 20.054782279999927,
+        "n_trials": 10
+      }
+    }
+  },
+  "drop_wave": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 2.250827560003381,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 7.794639200004167,
+        "n_trials": 10
+      }
+    }
+  },
+  "eggholder": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 16.62269492999767,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 25.995449659996666,
+        "n_trials": 10
+      }
+    }
+  },
+  "holder_table": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 15.228749950003111,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 24.747522989998107,
+        "n_trials": 10
+      }
+    }
+  },
+  "schaffer2": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 22.604752779999398,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 27.562404979995335,
+        "n_trials": 10
+      }
+    }
+  },
+  "schaffer4": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 22.977886289998423,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 25.17244034000032,
+        "n_trials": 10
+      }
+    }
+  },
+  "levy13": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 3.0363199000013994,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.0340734300029,
+        "n_trials": 10
+      }
+    }
+  },
+  "langermann": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 10.832707829997526,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 17.537950280000224,
+        "n_trials": 10
+      }
+    }
+  },
+  "de_jong5": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 4.394199340004707,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 7.534647079999559,
+        "n_trials": 10
+      }
+    }
+  },
+  "shubert": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 11.128945439995732,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 32.190061139996395,
+        "n_trials": 10
+      }
+    }
+  },
+  "bukin6": {
+    "2": {
+      "random": {
+        "rate": 0.0,
+        "mean_wall": 4.994963439996354,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 0.0,
+        "mean_wall": 8.635265420007636,
+        "n_trials": 10
+      }
+    }
+  },
+  "bohachevsky": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 14.406780760001856,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 16.620158280001487,
+        "n_trials": 10
+      }
+    }
+  },
+  "sum_of_different_powers": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 9.575471150001977,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 12.396246039998369,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 2.1675283199961997,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 4.353399600001285,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 2.534729710005922,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 4.347769690002314,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 2.6282720500050347,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 2.87679454999743,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 2.092867630001274,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 1.8637506500002927,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 0.2,
+        "mean_wall": 2.472973900003126,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 2.944711069998448,
+        "n_trials": 10
+      }
+    }
+  },
+  "sphere": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 0.09875650999892968,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 0.2280123100063065,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 0.13618701999948826,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 0.1761171900026966,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 0.18724050000600984,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 0.23353191000351217,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 0.12513808999501635,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 0.18577304000791628,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 0.38933994999388233,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 0.36898946000437716,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 0.42322587000089695,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 0.6320251800032566,
+        "n_trials": 10
+      }
+    }
+  },
+  "rosenbrock": {
+    "2": {
+      "random": {
+        "rate": 0.2,
+        "mean_wall": 6.581173490002402,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 0.5,
+        "mean_wall": 10.901813089995994,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 7.552587300009327,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.552764040004694,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 7.470403610003996,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 16.614982049999526,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 12.871477869999945,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 14.621439470001496,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 18.63229148000537,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 11.383063010001205,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 8.188738130006822,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 11.359440410000389,
+        "n_trials": 10
+      }
+    }
+  },
+  "zakharov": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 1.1108817200060002,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 1.7587123700039229,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 1.5333532399963588,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 2.8783127299975604,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 3.1533037799963495,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 3.8849233800021468,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 8.996726699994179,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 10.72651425000804,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 8.160840749993804,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.177023520003422,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 10.688221409995458,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 8.298826639997424,
+        "n_trials": 10
+      }
+    }
+  },
+  "dixon_price": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 1.4081401899951742,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 2.6903353199973936,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 2.8696562100027223,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.634951700002421,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 4.542107019998366,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 16.04051795999694,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 9.676617179997265,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 11.961623770001461,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 11.556876400002512,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.331776859998353,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 7.704620529993553,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.899398550004117,
+        "n_trials": 10
+      }
+    }
+  },
+  "trid": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 0.35251723999681417,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 0.5577653500047746,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 1.9826270100020338,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 2.5795683399919653,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 8.181406259999495,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 13.035464450006838,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 20.494162810005946,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 27.28142016000056,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 0.1,
+        "mean_wall": 16.38638243000314,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 0.4,
+        "mean_wall": 11.763145379998605,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 0.0,
+        "mean_wall": 7.270065509999403,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 0.0,
+        "mean_wall": 8.855365369995706,
+        "n_trials": 10
+      }
+    }
+  },
+  "rotated_hyper_ellipsoid": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 0.38477032000082545,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 0.5157537699997192,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 0.7440392199991038,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 1.1040664000000107,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 2.184034980006982,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 5.225826460003736,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 3.667210149994935,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 5.688227160001406,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 8.701220510000713,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 11.726506649999646,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 48.45076764000114,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 100.63822676000709,
+        "n_trials": 10
+      }
+    }
+  },
+  "sum_squares": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 0.38787479999591595,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 0.4934885899972869,
+        "n_trials": 10
+      }
+    },
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 0.5851395799982129,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 0.7951944999978877,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 1.5299242799985222,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 3.521268649995909,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 4.247075830001267,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 10.157148199999938,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 3.849857610001345,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 2.9882768100011163,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 3.8912783199950356,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 4.384137019998161,
+        "n_trials": 10
+      }
+    }
+  },
+  "booth": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 0.5403083500015782,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 0.7688231400010409,
+        "n_trials": 10
+      }
+    }
+  },
+  "matyas": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 0.47364141000143717,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 0.6637794700072845,
+        "n_trials": 10
+      }
+    }
+  },
+  "mccormick": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 2.3840571900014766,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 3.1344093200023053,
+        "n_trials": 10
+      }
+    }
+  },
+  "camel3": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 1.4333430700004102,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 2.1371197000029496,
+        "n_trials": 10
+      }
+    }
+  },
+  "camel6": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 1.7441169900004752,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 4.0894436899980064,
+        "n_trials": 10
+      }
+    }
+  },
+  "beale": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 6.015920790002565,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 13.474318879997009,
+        "n_trials": 10
+      }
+    }
+  },
+  "branin": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 2.0629480299947316,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 2.2359294200025035,
+        "n_trials": 10
+      }
+    }
+  },
+  "goldstein_price": {
+    "2": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 6.784780240009423,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 10.974513929995009,
+        "n_trials": 10
+      }
+    }
+  },
+  "hartmann3": {
+    "3": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 4.072129960005986,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 7.163678949992755,
+        "n_trials": 10
+      }
+    }
+  },
+  "hartmann4": {
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 5.262570910001523,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 8.38074023000081,
+        "n_trials": 10
+      }
+    }
+  },
+  "hartmann6": {
+    "6": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 11.400263450003695,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 23.225400370001445,
+        "n_trials": 10
+      }
+    }
+  },
+  "shekel": {
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 10.059447329994873,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 15.579657600005158,
+        "n_trials": 10
+      }
+    }
+  },
+  "colville": {
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 5.508208320004632,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 7.91219513999531,
+        "n_trials": 10
+      }
+    }
+  },
+  "powell": {
+    "4": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 4.282043220000924,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 7.947444050002377,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 18.075916789995972,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 9.910169980002683,
+        "n_trials": 10
+      }
+    },
+    "16": {
+      "random": {
+        "rate": 1.0,
+        "mean_wall": 13.231202840001789,
+        "n_trials": 10
+      },
+      "carry_tiger": {
+        "rate": 1.0,
+        "mean_wall": 28.48070522999624,
+        "n_trials": 10
+      }
+    }
+  }
+}

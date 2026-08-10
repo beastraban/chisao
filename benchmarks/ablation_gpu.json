@@ -1,0 +1,1046 @@
+{
+  "8": {
+    "Full ChiSao": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 8.959286059997975,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 6.800403009992442,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 21.857359510002425,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 5.356835960000171,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 12.828250259993364,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 15.064729510003236,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 11.851055759994779,
+        "n_trials": 10
+      }
+    },
+    "- Anti-conv (Ph.6)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 3.5330543399992167,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 8.31451589000353,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 11.687677889998303,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 4.887609299996984,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 13.653066610000678,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 1.0,
+        "mean_wall": 14.998850520004634,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 14.846186159996432,
+        "n_trials": 10
+      }
+    },
+    "- Hands Like Clouds (Ph.5)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 8.129058960004476,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 4.241714879995561,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 11.112312030006432,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 5.839593830006197,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 11.268709569997736,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 13.202059449997614,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 13.212958170005004,
+        "n_trials": 10
+      }
+    },
+    "- Reseeding (Ph.4)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 4.260483379996731,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 5.64535581000091,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 17.753341659993747,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 4.911693750001723,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 8.111847770001622,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 16.523956489999545,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 9.533743209997192,
+        "n_trials": 10
+      }
+    },
+    "- Deduplication (Ph.3)": {
+      "rastrigin": {
+        "rate": 0.0,
+        "mean_wall": 11.47095223000215,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 0.0,
+        "mean_wall": 16.449666359997355,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 0.0,
+        "mean_wall": 19.023486039997078,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 0.0,
+        "mean_wall": 14.964336740001453,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 0.0,
+        "mean_wall": 10.396396890000323,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 13.407690480002202,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 0.0,
+        "mean_wall": 15.48030146000383,
+        "n_trials": 10
+      }
+    },
+    "Single osc. (n=1)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 4.240501370001584,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 4.752340269996784,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 15.03401348000043,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 8.030283430000418,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 8.269214950004244,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 13.05190520999895,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 12.244384480000008,
+        "n_trials": 10
+      }
+    },
+    "Plain multistart": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 2.522791519999737,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 14.967932419994032,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 18.092153620003955,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 9.354782049995265,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 12.032782629996655,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 13.05187595000316,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 10.545578299998306,
+        "n_trials": 10
+      }
+    }
+  },
+  "16": {
+    "Full ChiSao": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 3.670813100002124,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 4.275500350006041,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 23.275445170002058,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 7.48983515999862,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 6.4587025599990735,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 15.007398909999756,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 12.835276549999254,
+        "n_trials": 10
+      }
+    },
+    "- Anti-conv (Ph.6)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 3.2150051400007214,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 6.633560770004988,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 0.2,
+        "mean_wall": 18.549998150000466,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 6.778030829998897,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 6.302286300002015,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.8,
+        "mean_wall": 3.667678089995752,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 14.882414619994233,
+        "n_trials": 10
+      }
+    },
+    "- Hands Like Clouds (Ph.5)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 4.738576790006482,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 3.157354409998516,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 12.53988749999844,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 8.445034080004552,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 6.791245190001791,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 16.95494553000026,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 3.2959522499993907,
+        "n_trials": 10
+      }
+    },
+    "- Reseeding (Ph.4)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 4.013356739998562,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 4.095051359999343,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 23.035783099997207,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 5.246878479997394,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 6.319871649995912,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 16.417628740004147,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 14.478142900002421,
+        "n_trials": 10
+      }
+    },
+    "- Deduplication (Ph.3)": {
+      "rastrigin": {
+        "rate": 0.0,
+        "mean_wall": 15.572224139998434,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 0.0,
+        "mean_wall": 14.973744070000247,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 0.0,
+        "mean_wall": 14.365415660003782,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 0.0,
+        "mean_wall": 14.986422529997071,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 0.0,
+        "mean_wall": 12.742417939993903,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 13.71208156000066,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 0.0,
+        "mean_wall": 8.898864049999975,
+        "n_trials": 10
+      }
+    },
+    "Single osc. (n=1)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 2.2624663700087693,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 1.2785613899963209,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 11.083356919998186,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 2.696715809998568,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 3.7410197299992434,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 7.662446429996635,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 11.101845100001082,
+        "n_trials": 10
+      }
+    },
+    "Plain multistart": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 1.1779095199977747,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 7.00378425999661,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 0.6,
+        "mean_wall": 7.785427390001132,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 3.2237471100059336,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 5.770000509999226,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 6.167290470004081,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 6.319307569999364,
+        "n_trials": 10
+      }
+    }
+  },
+  "32": {
+    "Full ChiSao": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 2.8549496100022225,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 3.8944561000040268,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 11.421970590000274,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 3.122063490000437,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 3.0144704300066225,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 12.284367889992428,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 6.585158240000601,
+        "n_trials": 10
+      }
+    },
+    "- Anti-conv (Ph.6)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 2.208966789997066,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 6.383662280000863,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 0.0,
+        "mean_wall": 11.696827360001043,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 2.7137006800010566,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 1.9552731600007973,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.6,
+        "mean_wall": 1.6194862699951045,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 7.449891300001764,
+        "n_trials": 10
+      }
+    },
+    "- Hands Like Clouds (Ph.5)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 2.4980876400019043,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 1.9126377899985527,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 20.44597015999316,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 3.7942576200002804,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 7.50517669999972,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 13.376959520007949,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 6.647905120006181,
+        "n_trials": 10
+      }
+    },
+    "- Reseeding (Ph.4)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 2.415550960006658,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 3.4027157199860083,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 11.036559180007316,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 2.7861175499972886,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 2.75495791999856,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 15.22114829000202,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 5.605765319999773,
+        "n_trials": 10
+      }
+    },
+    "- Deduplication (Ph.3)": {
+      "rastrigin": {
+        "rate": 0.0,
+        "mean_wall": 2.5607929500110913,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 0.0,
+        "mean_wall": 11.407525690010516,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 0.0,
+        "mean_wall": 5.772100089996821,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 0.0,
+        "mean_wall": 5.358928329998162,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 0.0,
+        "mean_wall": 4.215679770003772,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 6.604953299986664,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 0.0,
+        "mean_wall": 4.241250100004254,
+        "n_trials": 10
+      }
+    },
+    "Single osc. (n=1)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 3.969740649999585,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 1.8452038900111802,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 19.548941789992387,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 2.1453105300024617,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 7.415513860003557,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 14.252295679989038,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 17.691277889994673,
+        "n_trials": 10
+      }
+    },
+    "Plain multistart": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 1.0885972400079482,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 8.655479339993326,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 0.0,
+        "mean_wall": 8.537459449999734,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 1.6741125500062481,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 3.4175320599926637,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 6.196248919994105,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 6.611961020005401,
+        "n_trials": 10
+      }
+    }
+  },
+  "64": {
+    "Full ChiSao": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 3.7295829400129152,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 10.63892274000682,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 14.305046590004348,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 4.380891059996793,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 3.99434774001129,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 8.052314210002077,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 12.391925889987032,
+        "n_trials": 10
+      }
+    },
+    "- Anti-conv (Ph.6)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 2.7617738899833055,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 4.716777049994562,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 0.0,
+        "mean_wall": 12.865060610004003,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 3.9512236500042492,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 3.3104060400102755,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 2.134991399990395,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 11.559731009998359,
+        "n_trials": 10
+      }
+    },
+    "- Hands Like Clouds (Ph.5)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 3.312323390005622,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 17.350811480003177,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 18.843148600001587,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 6.814467379992129,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 10.084193239989691,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 17.765507710009114,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 16.882093870011158,
+        "n_trials": 10
+      }
+    },
+    "- Reseeding (Ph.4)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 2.7837850900075862,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 9.964317039999878,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 13.494928360008634,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 3.2682369000045584,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 3.839875920000486,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 7.967395210004179,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 14.383040820009773,
+        "n_trials": 10
+      }
+    },
+    "- Deduplication (Ph.3)": {
+      "rastrigin": {
+        "rate": 0.0,
+        "mean_wall": 3.262947970000096,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 0.0,
+        "mean_wall": 6.716645800013794,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 0.0,
+        "mean_wall": 7.359216580010252,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 0.0,
+        "mean_wall": 5.640244839992374,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 0.0,
+        "mean_wall": 5.261910519993398,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 4.6077482800057625,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 0.0,
+        "mean_wall": 5.702813590003643,
+        "n_trials": 10
+      }
+    },
+    "Single osc. (n=1)": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 3.5571530399960465,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 16.614606380014447,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 1.0,
+        "mean_wall": 24.105535640002927,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 4.932490170001984,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 9.060316290002083,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 16.074188329989557,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 19.871592059999237,
+        "n_trials": 10
+      }
+    },
+    "Plain multistart": {
+      "rastrigin": {
+        "rate": 1.0,
+        "mean_wall": 1.156234020012198,
+        "n_trials": 10
+      },
+      "ackley": {
+        "rate": 1.0,
+        "mean_wall": 11.149862340005347,
+        "n_trials": 10
+      },
+      "levy": {
+        "rate": 0.0,
+        "mean_wall": 10.837301250000019,
+        "n_trials": 10
+      },
+      "griewank": {
+        "rate": 1.0,
+        "mean_wall": 3.8693675399932546,
+        "n_trials": 10
+      },
+      "styblinski_tang": {
+        "rate": 1.0,
+        "mean_wall": 3.21733138000709,
+        "n_trials": 10
+      },
+      "schwefel": {
+        "rate": 0.0,
+        "mean_wall": 8.427561339980457,
+        "n_trials": 10
+      },
+      "michalewicz": {
+        "rate": 1.0,
+        "mean_wall": 9.27883695999626,
+        "n_trials": 10
+      }
+    }
+  }
+}

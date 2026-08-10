@@ -1,0 +1,40 @@
+{
+  "device": "GPU (CuPy, NVIDIA GeForce RTX 3080 Laptop GPU)",
+  "function": "ackley",
+  "D": 64,
+  "seeder": "random",
+  "shift_frac": 0.4,
+  "full": false,
+  "by_sweep": {
+    "200": {
+      "pop": 200,
+      "recover": 0.0,
+      "fes": 392144,
+      "wall_s": 1.5129196643829346
+    },
+    "1000": {
+      "pop": 1000,
+      "recover": 0.0,
+      "fes": 1862344,
+      "wall_s": 1.4699842929840088
+    },
+    "5000": {
+      "pop": 5000,
+      "recover": 0.0,
+      "fes": 9210344,
+      "wall_s": 1.7809786796569824
+    },
+    "20000": {
+      "pop": 20000,
+      "recover": 0.0,
+      "fes": 36785344,
+      "wall_s": 4.979120492935181
+    },
+    "100000": {
+      "pop": 100000,
+      "recover": 0.0,
+      "fes": 184025344,
+      "wall_s": 22.389051914215088
+    }
+  }
+}

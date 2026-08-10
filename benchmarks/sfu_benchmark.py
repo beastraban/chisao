@@ -35,8 +35,14 @@ import numpy as np
 
 try:
     import cupy as cp
-    GPU = True
-except ImportError:
+    try:
+        GPU = cp.cuda.runtime.getDeviceCount() > 0   # imported but no visible device (CVD=-1) -> CPU
+    except Exception:
+        GPU = False
+    if not GPU:
+        cp = np
+        warnings.warn('CuPy present but no CUDA device; running on CPU.')
+except Exception:
     cp = np
     GPU = False
     warnings.warn('CuPy not available; running on CPU.')
@@ -59,6 +65,19 @@ def gpu_clear():
 # ─────────────────────────────────────────────────────────────────
 
 def load_package(source_dir=None):
+    # Force the patched package when CHISAO_SRC is set -- bypasses the standalone/
+    # sunburst shadowing below so the WHOLE gamut provably runs on the package.
+    _forced = os.environ.get('CHISAO_SRC')
+    if _forced:
+        _forced = os.path.abspath(_forced)
+        if _forced not in sys.path:
+            sys.path.insert(0, _forced)
+        for key in [k for k in list(sys.modules) if k == 'chisao' or k.startswith('chisao.')]:
+            del sys.modules[key]
+        import chisao as _pkg
+        print(f'Loaded PATCHED package chisao from CHISAO_SRC={_forced} -> {_pkg.__file__}')
+        return _pkg.sticky_hands
+
     if source_dir is not None:
         source_dir = os.path.abspath(source_dir)
         if os.path.exists(os.path.join(source_dir, 'chisao.py')):
@@ -610,7 +629,7 @@ FUNC_REGISTRY = {
     ),
     'trid': dict(
         func=trid, group='bowl',
-        bounds=None,  # D-dependent: [-D^2, D^2]
+        bounds=None, bounds_fn=lambda D: (-D * D, D * D),  # D-dependent: [-D^2, D^2]
         optimum_x=None, tol=0.5,
         description='Global min: x_i = i*(D+1-i)',
     ),
@@ -752,11 +771,16 @@ def make_bounds_asym_xp(bounds_asym):
     arr = np.array([[b[0], b[1]] for b in bounds_asym], dtype=np.float64)
     return cp.asarray(arr) if GPU else arr
 
+def _lohi(cfg, D):
+    """Resolve (lo, hi), honoring a D-dependent bounds_fn (e.g. trid: [-D^2, D^2])."""
+    bf = cfg.get('bounds_fn')
+    return bf(D) if bf is not None else cfg['bounds']
+
 def get_bnd(cfg, D):
     asym = cfg.get('bounds_asym')
     if asym is not None:
         return make_bounds_asym_xp(asym)
-    lo, hi = cfg['bounds']
+    lo, hi = _lohi(cfg, D)
     return make_bounds_xp(lo, hi, D)
 
 # ─────────────────────────────────────────────────────────────────
@@ -771,7 +795,7 @@ def seed_random(cfg, D, N, seed):
         cols = [rng.uniform(b[0], b[1], N) for b in asym]
         x0 = np.column_stack(cols)
     else:
-        lo, hi = cfg['bounds']
+        lo, hi = _lohi(cfg, D)
         x0 = rng.uniform(lo, hi, (N, D))
     return cp.asarray(x0, dtype=cp.float64) if GPU else x0.astype(np.float64)
 
@@ -795,7 +819,7 @@ def seed_carry_tiger(cfg, D, seed):
     if asym is not None:
         bounds_np = np.array([[b[0], b[1]] for b in asym], dtype=np.float64)
     else:
-        lo, hi = cfg['bounds']
+        lo, hi = _lohi(cfg, D)
         bounds_np = np.array([[lo, hi]] * D, dtype=np.float64)
 
     bounds_xp = xp.array(bounds_np)
@@ -930,9 +954,44 @@ def _diag(peaks, cfg, D, ok):
     return ''
 
 
+def _cell_complete(entry, n_trials):
+    """A (function, D) cell is done iff BOTH seeders have finalized stats at this n_trials."""
+    if not isinstance(entry, dict):
+        return False
+    for s in SEEDERS:
+        sd = entry.get(s)
+        if not isinstance(sd, dict) or 'rate' not in sd or sd.get('n_trials') != n_trials:
+            return False
+    return True
+
+
 def run_benchmark(sticky_hands, func_names, dims, n_trials, out_path=None):
     # results[fname][D][seeder] = {'rate', 'mean_wall', 'n_trials'}
     results = {}
+
+    # ── resume: reload completed (function, D) cells from a prior interrupted run ──
+    prior = {}
+    if out_path and os.path.exists(out_path):
+        try:
+            raw = json.load(open(out_path))
+            for f, dd in raw.items():
+                prior[f] = {}
+                for dk, ent in dd.items():
+                    try:
+                        prior[f][int(dk)] = ent          # JSON stringifies int D-keys; restore
+                    except (TypeError, ValueError):
+                        prior[f][dk] = ent
+            n_done = sum(1 for f in prior for dk in prior[f]
+                         if _cell_complete(prior[f][dk], n_trials))
+            print(f'[resume] loaded {out_path}: {n_done} completed cell(s) will be skipped', flush=True)
+        except Exception as e:
+            print(f'[resume] could not read {out_path} ({e}); starting fresh', flush=True)
+            prior = {}
+
+    def _save():
+        if out_path:
+            with open(out_path, 'w') as f:
+                json.dump(results, f, indent=2)
 
     for fname in func_names:
         cfg = FUNC_REGISTRY[fname]
@@ -942,6 +1001,15 @@ def run_benchmark(sticky_hands, func_names, dims, n_trials, out_path=None):
         results[fname] = {}
 
         for D in dims_for_func:
+            # resume: skip cells already finished on disk (never lose more than one cell)
+            pcell = prior.get(fname, {}).get(D)
+            if _cell_complete(pcell, n_trials):
+                results[fname][D] = pcell
+                print(f'  -> {fname} D={D}:  random={pcell["random"]["rate"]:.0%}  '
+                      f'carry_tiger={pcell["carry_tiger"]["rate"]:.0%}  [resumed]', flush=True)
+                _save()
+                continue
+
             results[fname][D] = {s: {'successes': 0, 'walls': []} for s in SEEDERS}
 
             print(f'\n{"="*70}')
@@ -961,7 +1029,7 @@ def run_benchmark(sticky_hands, func_names, dims, n_trials, out_path=None):
                     results[fname][D][seeder]['walls'].append(wall)
 
                     n_peaks = len(peaks) if peaks is not None else 0
-                    marker = '✓' if ok else '✗'
+                    marker = 'v' if ok else 'x'
                     diag = _diag(peaks, cfg, D, ok)
                     row_parts.append(f'  {marker} {wall:.1f}s  {diag:<14}')
 
@@ -979,14 +1047,15 @@ def run_benchmark(sticky_hands, func_names, dims, n_trials, out_path=None):
 
             rr = results[fname][D]['random']['rate']
             rc = results[fname][D]['carry_tiger']['rate']
-            print(f'  → {fname} D={D}:  random={rr:.0%}  carry_tiger={rc:.0%}')
+            print(f'  -> {fname} D={D}:  random={rr:.0%}  carry_tiger={rc:.0%}')
+            _save()                        # per-cell checkpoint -> resume never loses >1 cell
 
     # ── Summary table ──────────────────────────────────────────────────────
     W = 75
     print(f'\n\n{"="*W}')
     print(f'  SUMMARY  ({n_trials} trials each)')
     print(f'{"="*W}')
-    print(f'  {"Function":<28}  {"D":>4}  {"Random":>7}  {"CarryTgr":>8}  {"Δ":>5}  Group')
+    print(f'  {"Function":<28}  {"D":>4}  {"Random":>7}  {"CarryTgr":>8}  {"d":>5}  Group')
     print(f'  {"-"*28}  {"-"*4}  {"-"*7}  {"-"*8}  {"-"*5}  -----')
     for fname, dresults in results.items():
         cfg = FUNC_REGISTRY[fname]
@@ -1026,8 +1095,8 @@ def main():
                         help=f'Functions to run. Choices: {ALL_FUNCS}')
     parser.add_argument('--group', default=None, choices=ALL_GROUPS,
                         help='Run only functions in this group')
-    parser.add_argument('--out', default=None,
-                        help='JSON output path')
+    parser.add_argument('--out', default='sfu_benchmark.json',
+                        help='JSON output path (incremental, crash-safe)')
     args = parser.parse_args()
 
     sticky_hands = load_package(args.source_dir)

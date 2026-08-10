@@ -1,0 +1,16 @@
+ChiSao GAMUT  device=both  started 2026-08-03 13:17:06  passes: gpu, cpu
+LAST UPDATE : 2026-08-03 23:43:49
+CURRENT     : COMPLETE at 2026-08-03 23:43:49 in 626.7 min -- 1 step(s) NOT OK
+------------------------------------------------------------
+  gpu  recovery     OK                    0s
+  gpu  ablation     OK                    0s
+  gpu  portfolio    OK                    0s
+  gpu  scaling      OK                    0s
+  gpu  highdim      OK                    0s
+  gpu  pop_base     OK                    0s
+  gpu  pop_full     OK                    0s
+  cpu  recovery     OK                    0s
+  cpu  ablation     TIMEOUT           28903s
+  cpu  portfolio    OK                 8696s
+  cpu  noise        OK                    0s
+  cpu  scaling      OK                    0s

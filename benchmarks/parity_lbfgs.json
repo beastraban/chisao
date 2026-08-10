@@ -1,0 +1,520 @@
+{
+  "rastrigin": {
+    "2": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.2,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.9,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.1,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      }
+    }
+  },
+  "ackley": {
+    "2": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.9,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      }
+    }
+  },
+  "levy": {
+    "2": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.1,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.1,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.9,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      }
+    }
+  },
+  "griewank": {
+    "2": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.4,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.1,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.8,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.8,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.8,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.8,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      }
+    }
+  },
+  "styblinski_tang": {
+    "2": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.8,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.1,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.8,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.5,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      }
+    }
+  },
+  "schwefel": {
+    "2": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.2,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.9,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.9,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "chisao": {
+        "rate": 0.1,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.9,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "chisao": {
+        "rate": 0.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "chisao": {
+        "rate": 0.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 0.0,
+        "n_trials": 10
+      }
+    }
+  },
+  "michalewicz": {
+    "2": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      }
+    },
+    "8": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      }
+    },
+    "32": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      }
+    },
+    "64": {
+      "chisao": {
+        "rate": 1.0,
+        "source": "sfu_benchmark_cpu.json"
+      },
+      "cma_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "de_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      },
+      "multistart_lbfgs": {
+        "rate": 1.0,
+        "n_trials": 10
+      }
+    }
+  }
+}

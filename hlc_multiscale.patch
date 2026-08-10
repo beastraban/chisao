@@ -1,0 +1,46 @@
+--- a/src/chisao/core.py	2026-07-23 10:08:08.254541637 +0300
++++ b/src/chisao/core.py	2026-07-23 10:08:08.270541637 +0300
+@@ -2809,6 +2809,8 @@
+     anti_step_size: float = 0.1,
+     # v2.2: Clouding parameters
+     cloud_sigma: Optional[float] = None,
++    cloud_scales: Optional[tuple] = None,   # (λ_fine, λ_mid, λ_coarse) from estimate_characteristic_scales
++    cloud_multiscale: bool = True,          # v3.3: cascade HLC coarse→mid→fine instead of a single σ
+     n_cloud: int = 2,
+     cloud_K: int = 10,
+     cloud_step_size: float = 0.1,
+@@ -3282,15 +3284,31 @@
+         # Use smoothed gradient to see global structure through local noise
+         # Only applies to UNSTUCK samples (stuck stay frozen at peaks)
+         if cloud_available and n_cloud > 0 and k < n_oscillations - 1:  # Not on last oscillation
++            # v3.3: cascade the THREE characteristic lengths (λ_coarse→λ_mid→λ_fine)
++            # instead of one σ, so coverage-scale blur can pull samples toward
++            # distant basins before finer scales resolve individual peaks.
++            if cloud_multiscale:
++                if cloud_scales is not None:
++                    _sf, _sm, _sc = (float(s) for s in sorted(cloud_scales))
++                else:
++                    # no explicit scales: bracket the auto σ across the domain
++                    _dom = float(xp.mean(bounds[:, 1] - bounds[:, 0])) if bounds is not None else 1.0
++                    _sc = min(0.5 * _dom, max(actual_cloud_sigma * 8.0, 0.1 * _dom))
++                    _sf = actual_cloud_sigma
++                    _sm = float((_sc * _sf) ** 0.5)
++                _cascade = [_sc, _sm, _sf]                       # coarse → fine
++            else:
++                _cascade = [actual_cloud_sigma]
+             if verbose:
+-                print(f"Hands Like Clouds (雲手, {n_cloud} iters, σ={actual_cloud_sigma:.4f})...")
++                print(f"Hands Like Clouds (雲手, {n_cloud} iters, scales={[round(c, 4) for c in _cascade]})...")
+             
+             n_unstuck = int(xp.sum(~stuck_mask))
+             if n_unstuck > 0:
+                 for i in range(n_cloud):
+-                    # Compute smoothed gradient (sees global basin, not local bumps)
++                    # v3.3: walk the cascade coarse→fine across the n_cloud iters
++                    sigma_i = _cascade[min(i * len(_cascade) // max(1, n_cloud), len(_cascade) - 1)]
+                     grad_smooth = whip.evaluate_gradient_smoothed(
+-                        x, func, sigma=actual_cloud_sigma, K=cloud_K,
++                        x, func, sigma=sigma_i, K=cloud_K,
+                         func_returns_grad=func_returns_grad
+                     )
+                     
