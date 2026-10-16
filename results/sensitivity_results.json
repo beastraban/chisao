@@ -1,0 +1,1279 @@
+{
+  "meta": {
+    "trials": 30,
+    "defaults": {
+      "n_oscillations": 3,
+      "n_anticonverge": 5,
+      "anti_momentum": 0.9,
+      "cloud_K": 10,
+      "n_converge": 10,
+      "n_cloud": 3,
+      "stick_tolerance": 1e-06,
+      "cloud_enabled": true,
+      "reseed_strategy": "repulse_monkey",
+      "method": "randcoord",
+      "line_search": "armijo"
+    },
+    "delta_quality_gate": "0.1 (HARDCODED in chisao.py:3179, not swept)",
+    "sweep_grid": [
+      [
+        "n_oscillations",
+        [
+          1,
+          3,
+          5
+        ]
+      ],
+      [
+        "n_anticonverge",
+        [
+          1,
+          5,
+          10
+        ]
+      ],
+      [
+        "anti_momentum",
+        [
+          0.5,
+          0.9,
+          0.99
+        ]
+      ],
+      [
+        "cloud_K",
+        [
+          5,
+          10,
+          20
+        ]
+      ]
+    ],
+    "seeder_mapping": {
+      "random": "CarryTiger(multi_scale=False)",
+      "carry_tiger": "CarryTiger(multi_scale=True)"
+    },
+    "functions": {
+      "rastrigin": {
+        "bounds": [
+          -5.12,
+          5.12
+        ],
+        "d": 32,
+        "tol": 0.5
+      },
+      "ackley": {
+        "bounds": [
+          -32.768,
+          32.768
+        ],
+        "d": 32,
+        "tol": 0.5
+      },
+      "levy": {
+        "bounds": [
+          -10.0,
+          10.0
+        ],
+        "d": 32,
+        "tol": 0.5
+      },
+      "griewank": {
+        "bounds": [
+          -600.0,
+          600.0
+        ],
+        "d": 32,
+        "tol": 1.0
+      },
+      "styblinski_tang": {
+        "bounds": [
+          -5.0,
+          5.0
+        ],
+        "d": 32,
+        "tol": 0.2
+      },
+      "schwefel": {
+        "bounds": [
+          -500.0,
+          500.0
+        ],
+        "d": 8,
+        "tol": 2.0
+      },
+      "michalewicz": {
+        "bounds": [
+          0.0,
+          3.141592653589793
+        ],
+        "d": 32,
+        "tol": 0.5
+      }
+    }
+  },
+  "results": {
+    "rastrigin": {
+      "random": {
+        "n_oscillations": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 3.2555015833333223
+          },
+          {
+            "value": 3,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 5.3227548800000175
+          },
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 6.66728597333334
+          }
+        ],
+        "n_anticonverge": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 4.224785713333252
+          },
+          {
+            "value": 5,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 5.430137133333331
+          },
+          {
+            "value": 10,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 2.383263696666639
+          }
+        ],
+        "anti_momentum": [
+          {
+            "value": 0.5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 4.524109810000012
+          },
+          {
+            "value": 0.9,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 5.197904553333349
+          },
+          {
+            "value": 0.99,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 4.962971796666655
+          }
+        ],
+        "cloud_K": [
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 5.175667579999966
+          },
+          {
+            "value": 10,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 4.749430573333302
+          },
+          {
+            "value": 20,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 4.710453220000045
+          }
+        ]
+      },
+      "carry_tiger": {
+        "n_oscillations": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 18.682500100000016
+          },
+          {
+            "value": 3,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 19.943673356666718
+          },
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 21.689684593333368
+          }
+        ],
+        "n_anticonverge": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 20.77065160333335
+          },
+          {
+            "value": 5,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 137.20431878333326
+          },
+          {
+            "value": 10,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 19.295524183333328
+          }
+        ],
+        "anti_momentum": [
+          {
+            "value": 0.5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 21.96436930000012
+          },
+          {
+            "value": 0.9,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 20.919626396666597
+          },
+          {
+            "value": 0.99,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 20.40721879999995
+          }
+        ],
+        "cloud_K": [
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 21.812023083333223
+          },
+          {
+            "value": 10,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 21.56452390666673
+          },
+          {
+            "value": 20,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 22.147101076666633
+          }
+        ]
+      }
+    },
+    "ackley": {
+      "random": {
+        "n_oscillations": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 5.353642473333214
+          },
+          {
+            "value": 3,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 7.36478232999998
+          },
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 9.99254533333339
+          }
+        ],
+        "n_anticonverge": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 22.911284716666522
+          },
+          {
+            "value": 5,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 7.394642990000041
+          },
+          {
+            "value": 10,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 25.155398693333577
+          }
+        ],
+        "anti_momentum": [
+          {
+            "value": 0.5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 6.737867133333566
+          },
+          {
+            "value": 0.9,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 6.719388276666723
+          },
+          {
+            "value": 0.99,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 6.984330456666915
+          }
+        ],
+        "cloud_K": [
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 7.166313836666692
+          },
+          {
+            "value": 10,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 7.7320217933329936
+          },
+          {
+            "value": 20,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 7.553494746666547
+          }
+        ]
+      },
+      "carry_tiger": {
+        "n_oscillations": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 22.243722289999642
+          },
+          {
+            "value": 3,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 24.726821073333
+          },
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 28.411510449999938
+          }
+        ],
+        "n_anticonverge": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 42.674934093333164
+          },
+          {
+            "value": 5,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 24.096777036666754
+          },
+          {
+            "value": 10,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 21.86176281666679
+          }
+        ],
+        "anti_momentum": [
+          {
+            "value": 0.5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 13.838916976666708
+          },
+          {
+            "value": 0.9,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 23.150655576666757
+          },
+          {
+            "value": 0.99,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 23.666316070000416
+          }
+        ],
+        "cloud_K": [
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 25.741701010000057
+          },
+          {
+            "value": 10,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 24.745149273333542
+          },
+          {
+            "value": 20,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 24.991054260000357
+          }
+        ]
+      }
+    },
+    "levy": {
+      "random": {
+        "n_oscillations": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 30.225810096666464
+          },
+          {
+            "value": 3,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 26.65003968333367
+          },
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 28.627342766667184
+          }
+        ],
+        "n_anticonverge": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 22.827078040000075
+          },
+          {
+            "value": 5,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 25.204406570000234
+          },
+          {
+            "value": 10,
+            "is_default": false,
+            "recovery_pct": 0.0,
+            "mean_wall_s": 31.495163603332912
+          }
+        ],
+        "anti_momentum": [
+          {
+            "value": 0.5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 25.17435849666666
+          },
+          {
+            "value": 0.9,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 26.569139799999295
+          },
+          {
+            "value": 0.99,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 24.98965165000021
+          }
+        ],
+        "cloud_K": [
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 24.70952315000007
+          },
+          {
+            "value": 10,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 25.572566923332488
+          },
+          {
+            "value": 20,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 26.065211743334416
+          }
+        ]
+      },
+      "carry_tiger": {
+        "n_oscillations": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 42.76313939333316
+          },
+          {
+            "value": 3,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 45.09819966333283
+          },
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 48.022960016666424
+          }
+        ],
+        "n_anticonverge": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 43.75599628666678
+          },
+          {
+            "value": 5,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 44.452300243333596
+          },
+          {
+            "value": 10,
+            "is_default": false,
+            "recovery_pct": 0.0,
+            "mean_wall_s": 53.649339323333216
+          }
+        ],
+        "anti_momentum": [
+          {
+            "value": 0.5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 44.563490349999725
+          },
+          {
+            "value": 0.9,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 43.92573200000018
+          },
+          {
+            "value": 0.99,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 44.06294010333392
+          }
+        ],
+        "cloud_K": [
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 44.65880797000039
+          },
+          {
+            "value": 10,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 44.57949223666655
+          },
+          {
+            "value": 20,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 17.315944873332956
+          }
+        ]
+      }
+    },
+    "griewank": {
+      "random": {
+        "n_oscillations": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 1.7115267099999376
+          },
+          {
+            "value": 3,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 2.170549793333339
+          },
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 4.328752906666705
+          }
+        ],
+        "n_anticonverge": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 2.037514029999875
+          },
+          {
+            "value": 5,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 2.060704023333225
+          },
+          {
+            "value": 10,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 2.2408410266666277
+          }
+        ],
+        "anti_momentum": [
+          {
+            "value": 0.5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 2.0695505100001657
+          },
+          {
+            "value": 0.9,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 2.0755623466667505
+          },
+          {
+            "value": 0.99,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 2.0469546099997387
+          }
+        ],
+        "cloud_K": [
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 2.0811532566664632
+          },
+          {
+            "value": 10,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 2.0816698533334903
+          },
+          {
+            "value": 20,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 2.146985933332932
+          }
+        ]
+      },
+      "carry_tiger": {
+        "n_oscillations": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 7.059956123333783
+          },
+          {
+            "value": 3,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 7.354898266666714
+          },
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 15.0233935033335
+          }
+        ],
+        "n_anticonverge": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 11.140753813333019
+          },
+          {
+            "value": 5,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 12.318056943333188
+          },
+          {
+            "value": 10,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 15.33302271333317
+          }
+        ],
+        "anti_momentum": [
+          {
+            "value": 0.5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 13.553204193333537
+          },
+          {
+            "value": 0.9,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 14.564348053333015
+          },
+          {
+            "value": 0.99,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 13.735264720000123
+          }
+        ],
+        "cloud_K": [
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 14.057572796666742
+          },
+          {
+            "value": 10,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 13.996870936666529
+          },
+          {
+            "value": 20,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 13.844228359999882
+          }
+        ]
+      }
+    },
+    "styblinski_tang": {
+      "random": {
+        "n_oscillations": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 3.654030640000322
+          },
+          {
+            "value": 3,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 4.3369629266668195
+          },
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 5.774291453333353
+          }
+        ],
+        "n_anticonverge": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 3.266840159999629
+          },
+          {
+            "value": 5,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 3.5004699999998894
+          },
+          {
+            "value": 10,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 4.123223773333666
+          }
+        ],
+        "anti_momentum": [
+          {
+            "value": 0.5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 4.916920969999774
+          },
+          {
+            "value": 0.9,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 3.9176556733335017
+          },
+          {
+            "value": 0.99,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 2.922676729999997
+          }
+        ],
+        "cloud_K": [
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 3.4089064966662894
+          },
+          {
+            "value": 10,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 3.4325234133331834
+          },
+          {
+            "value": 20,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 2.932420033333013
+          }
+        ]
+      },
+      "carry_tiger": {
+        "n_oscillations": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 11.911617663333406
+          },
+          {
+            "value": 3,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 11.422593503333337
+          },
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 14.60740288333315
+          }
+        ],
+        "n_anticonverge": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 12.80855479999991
+          },
+          {
+            "value": 5,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 14.309422850000193
+          },
+          {
+            "value": 10,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 13.535189110000283
+          }
+        ],
+        "anti_momentum": [
+          {
+            "value": 0.5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 15.246791423333343
+          },
+          {
+            "value": 0.9,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 10.773636359999971
+          },
+          {
+            "value": 0.99,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 11.24147093333316
+          }
+        ],
+        "cloud_K": [
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 13.19346228333355
+          },
+          {
+            "value": 10,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 11.085309936666818
+          },
+          {
+            "value": 20,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 11.232197436666684
+          }
+        ]
+      }
+    },
+    "schwefel": {
+      "random": {
+        "n_oscillations": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 10.0,
+            "mean_wall_s": 11.740354366666361
+          },
+          {
+            "value": 3,
+            "is_default": true,
+            "recovery_pct": 6.666666666666667,
+            "mean_wall_s": 16.179988486665994
+          },
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 3.3333333333333335,
+            "mean_wall_s": 11.901674976666982
+          }
+        ],
+        "n_anticonverge": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 10.0,
+            "mean_wall_s": 12.554869746666494
+          },
+          {
+            "value": 5,
+            "is_default": true,
+            "recovery_pct": 0.0,
+            "mean_wall_s": 10.921568163333237
+          },
+          {
+            "value": 10,
+            "is_default": false,
+            "recovery_pct": 3.3333333333333335,
+            "mean_wall_s": 17.785896493333226
+          }
+        ],
+        "anti_momentum": [
+          {
+            "value": 0.5,
+            "is_default": false,
+            "recovery_pct": 3.3333333333333335,
+            "mean_wall_s": 14.536626186666641
+          },
+          {
+            "value": 0.9,
+            "is_default": true,
+            "recovery_pct": 10.0,
+            "mean_wall_s": 20.404644446666378
+          },
+          {
+            "value": 0.99,
+            "is_default": false,
+            "recovery_pct": 3.3333333333333335,
+            "mean_wall_s": 13.376659323333296
+          }
+        ],
+        "cloud_K": [
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 6.666666666666667,
+            "mean_wall_s": 11.556554236666974
+          },
+          {
+            "value": 10,
+            "is_default": true,
+            "recovery_pct": 3.3333333333333335,
+            "mean_wall_s": 11.738711319999856
+          },
+          {
+            "value": 20,
+            "is_default": false,
+            "recovery_pct": 10.0,
+            "mean_wall_s": 13.918442313333799
+          }
+        ]
+      },
+      "carry_tiger": {
+        "n_oscillations": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 10.0,
+            "mean_wall_s": 29.270793403332938
+          },
+          {
+            "value": 3,
+            "is_default": true,
+            "recovery_pct": 10.0,
+            "mean_wall_s": 20.85323804000048
+          },
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 16.666666666666664,
+            "mean_wall_s": 23.41221609666633
+          }
+        ],
+        "n_anticonverge": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 16.666666666666664,
+            "mean_wall_s": 18.50168618666721
+          },
+          {
+            "value": 5,
+            "is_default": true,
+            "recovery_pct": 10.0,
+            "mean_wall_s": 19.2077383266677
+          },
+          {
+            "value": 10,
+            "is_default": false,
+            "recovery_pct": 10.0,
+            "mean_wall_s": 20.80687842333403
+          }
+        ],
+        "anti_momentum": [
+          {
+            "value": 0.5,
+            "is_default": false,
+            "recovery_pct": 13.333333333333334,
+            "mean_wall_s": 21.877835919999537
+          },
+          {
+            "value": 0.9,
+            "is_default": true,
+            "recovery_pct": 16.666666666666664,
+            "mean_wall_s": 20.508500650000254
+          },
+          {
+            "value": 0.99,
+            "is_default": false,
+            "recovery_pct": 16.666666666666664,
+            "mean_wall_s": 20.628843260000334
+          }
+        ],
+        "cloud_K": [
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 16.666666666666664,
+            "mean_wall_s": 21.342228699999637
+          },
+          {
+            "value": 10,
+            "is_default": true,
+            "recovery_pct": 6.666666666666667,
+            "mean_wall_s": 19.585584443333936
+          },
+          {
+            "value": 20,
+            "is_default": false,
+            "recovery_pct": 10.0,
+            "mean_wall_s": 23.661537373333218
+          }
+        ]
+      }
+    },
+    "michalewicz": {
+      "random": {
+        "n_oscillations": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 14.653485470000549
+          },
+          {
+            "value": 3,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 10.497015629999805
+          },
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 10.843470349999794
+          }
+        ],
+        "n_anticonverge": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 12.288550173332867
+          },
+          {
+            "value": 5,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 9.431360356667332
+          },
+          {
+            "value": 10,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 6.22329304666661
+          }
+        ],
+        "anti_momentum": [
+          {
+            "value": 0.5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 11.343705089999032
+          },
+          {
+            "value": 0.9,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 7.572393433333976
+          },
+          {
+            "value": 0.99,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 8.540746293333601
+          }
+        ],
+        "cloud_K": [
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 7.946791923333998
+          },
+          {
+            "value": 10,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 9.475107539999833
+          },
+          {
+            "value": 20,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 8.011764773334288
+          }
+        ]
+      },
+      "carry_tiger": {
+        "n_oscillations": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 30.11643224666671
+          },
+          {
+            "value": 3,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 19.279638476666392
+          },
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 22.64301321333284
+          }
+        ],
+        "n_anticonverge": [
+          {
+            "value": 1,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 28.826053043333136
+          },
+          {
+            "value": 5,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 23.756814876666613
+          },
+          {
+            "value": 10,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 19.586605263333816
+          }
+        ],
+        "anti_momentum": [
+          {
+            "value": 0.5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 15.925241933332776
+          },
+          {
+            "value": 0.9,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 19.569535723333924
+          },
+          {
+            "value": 0.99,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 22.05587422333289
+          }
+        ],
+        "cloud_K": [
+          {
+            "value": 5,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 18.632689863332537
+          },
+          {
+            "value": 10,
+            "is_default": true,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 20.30780345000021
+          },
+          {
+            "value": 20,
+            "is_default": false,
+            "recovery_pct": 100.0,
+            "mean_wall_s": 23.241569776666438
+          }
+        ]
+      }
+    }
+  }
+}
