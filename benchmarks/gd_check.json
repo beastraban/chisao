@@ -1,0 +1,155 @@
+{
+ "meta": {
+  "created": "2026-10-15 18:07:52",
+  "trials": 1,
+  "recovery_rule": "closest returned peak / best-seen point within cfg['tol'] of a known global optimum, in L_inf and in L_2 (same radius)",
+  "budget_rule": "baselines capped at max(evals of the two ChiSao runs) in the same trial; --budget-cap=0",
+  "chisao_params": "sfu_benchmark.run_one defaults"
+ },
+ "optima": {
+  "booth|2": {
+   "x": [
+    [
+     1.0,
+     3.0
+    ]
+   ],
+   "f": [
+    -0.0
+   ]
+  },
+  "matyas|2": {
+   "x": [
+    [
+     0.0,
+     0.0
+    ]
+   ],
+   "f": [
+    -0.0
+   ]
+  }
+ },
+ "trials": {
+  "booth|2|chisao_random": [
+   {
+    "trial": 0,
+    "seed": 2047699008,
+    "d_inf": 0.0,
+    "d_2": 0.0,
+    "n_peaks": 1,
+    "n_evals": 121636,
+    "wall": 2.453059299994493,
+    "error": null
+   }
+  ],
+  "booth|2|chisao_carry_tiger": [
+   {
+    "trial": 0,
+    "seed": 2047699008,
+    "d_inf": 1.1102230246251565e-16,
+    "d_2": 1.1102230246251565e-16,
+    "n_peaks": 1,
+    "n_evals": 243186,
+    "wall": 0.5585177000029944,
+    "error": null
+   }
+  ],
+  "booth|2|DE": [
+   {
+    "trial": 0,
+    "seed": 2047699008,
+    "d_inf": 1.3322676295501878e-15,
+    "d_2": 1.4043333874306805e-15,
+    "n_peaks": 1,
+    "n_evals": 3363,
+    "wall": 0.106987899998785,
+    "error": null
+   }
+  ],
+  "booth|2|BH": [
+   {
+    "trial": 0,
+    "seed": 2047699008,
+    "d_inf": 6.669109708923315e-12,
+    "d_2": 7.433053007238705e-12,
+    "n_peaks": 1,
+    "n_evals": 243186,
+    "wall": 25.643856299997424,
+    "error": null
+   }
+  ],
+  "booth|2|CMA-ES": [
+   {
+    "trial": 0,
+    "seed": 2047699008,
+    "d_inf": 2.0416379697962839e-10,
+    "d_2": 2.220464825388175e-10,
+    "n_peaks": 1,
+    "n_evals": 243186,
+    "wall": 16.270561900004395,
+    "error": null
+   }
+  ],
+  "matyas|2|chisao_random": [
+   {
+    "trial": 0,
+    "seed": 65935023,
+    "d_inf": 2.7224021401559056e-25,
+    "d_2": 3.325254319201409e-25,
+    "n_peaks": 2,
+    "n_evals": 104772,
+    "wall": 1.3973958999995375,
+    "error": null
+   }
+  ],
+  "matyas|2|chisao_carry_tiger": [
+   {
+    "trial": 0,
+    "seed": 65935023,
+    "d_inf": 0.0,
+    "d_2": 0.0,
+    "n_peaks": 1,
+    "n_evals": 225586,
+    "wall": 0.5843009000091115,
+    "error": null
+   }
+  ],
+  "matyas|2|DE": [
+   {
+    "trial": 0,
+    "seed": 65935023,
+    "d_inf": 0.0,
+    "d_2": 0.0,
+    "n_peaks": 1,
+    "n_evals": 3693,
+    "wall": 0.10508359999221284,
+    "error": null
+   }
+  ],
+  "matyas|2|BH": [
+   {
+    "trial": 0,
+    "seed": 65935023,
+    "d_inf": 3.1400915892210687e-09,
+    "d_2": 3.37862729004854e-09,
+    "n_peaks": 1,
+    "n_evals": 225586,
+    "wall": 19.73421789999702,
+    "error": null
+   }
+  ],
+  "matyas|2|CMA-ES": [
+   {
+    "trial": 0,
+    "seed": 65935023,
+    "d_inf": 2.746930008404373e-09,
+    "d_2": 3.2027253545609237e-09,
+    "n_peaks": 1,
+    "n_evals": 225586,
+    "wall": 5.858425600003102,
+    "error": null
+   }
+  ]
+ }
+}
