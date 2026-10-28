@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use ChiSao, please cite the article below."
+title: "ChiSao"
+type: software
+authors:
+  - family-names: Wolfson
+    given-names: Ira
+    orcid: "https://orcid.org/0000-0003-0213-8452"
+license: MIT
+repository-code: "https://github.com/beastraban/chisao"
+preferred-citation:
+  type: article
+  title: "ChiSao: A fully GPU-resident optimizer for cataloguing the modes of multimodal black-box functions"
+  authors:
+    - family-names: Wolfson
+      given-names: Ira
+      orcid: "https://orcid.org/0000-0003-0213-8452"
+  journal: "Swarm and Evolutionary Computation"
+  volume: 110
+  start: 102574
+  year: 2026
+  doi: "10.1016/j.swevo.2026.102574"

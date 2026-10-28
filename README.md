@@ -21,6 +21,9 @@ ChiSao began as the mode-discovery engine of the
 [SunBURST](https://pypi.org/project/sunburst-bayes/) Bayesian-evidence pipeline
 and is published here as a standalone optimizer.
 
+The method is published in *Swarm and Evolutionary Computation* **110**, 102574 (2026),
+open access: [doi:10.1016/j.swevo.2026.102574](https://doi.org/10.1016/j.swevo.2026.102574).
+
 ## Install
 
 ```bash
@@ -128,10 +131,16 @@ settings used in the paper.
 
 ```bibtex
 @article{wolfson_chisao,
-  title  = {ChiSao: A GPU-Native Parallel Optimizer for Multimodal Black-Box
-            Functions via Convergence-Anticonvergence Oscillation},
-  author = {Wolfson, Ira},
-  year   = {2026}
+  title   = {ChiSao: A fully GPU-resident optimizer for cataloguing the modes
+             of multimodal black-box functions},
+  author  = {Wolfson, Ira},
+  journal = {Swarm and Evolutionary Computation},
+  volume  = {110},
+  pages   = {102574},
+  year    = {2026},
+  doi     = {10.1016/j.swevo.2026.102574},
+  eprint  = {2606.26164},
+  archivePrefix = {arXiv}
 }
 ```
 
